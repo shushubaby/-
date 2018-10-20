@@ -1,0 +1,28 @@
+基本思想：对直接插入排序的优化，增量式的进行插入排序，直到最后增量为1时就为插入排序。（在小分组进行排序，使得整个序列基本有序）
+input:A=[9,1,5,8,3,7,4,6,2]
+output:A=[1,2,3,4,5,6,7,8,9]
+
+class shellSort(object):
+    def ssort(self,A):
+        add=len(A)
+        while add>1:
+            add=int(add/2)
+            for j in range(add,len(A)):
+                temp=A[j]
+                k=j-add
+                if A[j]>=A[k]:
+                    continue
+                while k>=0:
+                    if A[k]>temp:
+                        A[k+add]=A[k]
+                        k-=add
+                    else:
+                        A[k+add]=temp
+                        break
+                if k<0:
+                    A[k+add]=temp
+
+a=shellSort()
+A=[9,1,5,8,3,7,4,6,2]
+a.ssort(A)
+print(A)
