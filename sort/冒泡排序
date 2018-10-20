@@ -1,0 +1,22 @@
+基本思想：相邻两个数比较，交换。
+input:A=[9,1,5,8,3,7,4,6,2]
+output:A=[1,2,3,4,5,6,7,8,9]
+
+class bubbleSort(object):
+    def swap(self,L,x,y):
+        temp=L[x]
+        L[x]=L[y]
+        L[y]=temp
+
+    def bsort(self,A):
+        i=len(A)-1
+        while i>0:
+            for j in range(0,i):
+                if A[j]>A[j+1]:
+                    self.swap(A,j,j+1)
+            i-=1
+
+a=bubbleSort()
+A=[9,1,5,8,3,7,4,6,2]
+a.bsort(A)
+print(A)
