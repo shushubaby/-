@@ -1,0 +1,25 @@
+问题：给定两个有序数组，合并，使得合并后的数组仍然有序
+input:A=[1,4,6,8,9],B=[2,3,7,9,10,12]
+output:L=[1,2,3,4,6,7,8,9,9,10,12]
+
+class merge(object):
+    def mer(self,A,B):
+        L=[]
+        i,j=0,0
+        while i<len(A) and j<len(B):
+            if A[i]<B[j]:
+                L.append(A[i])
+                i+=1
+            else:
+                L.append(B[j])
+                j+=1
+        if i>=len(A):
+            L+=B[j:]
+        if j>=len(B):
+            L+=A[i:]
+        return L
+
+a=merge()
+B=[1,4,6,8,9]
+A=[2,3,7,9,10,12]
+print(a.mer(A,B))
