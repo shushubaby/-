@@ -1,0 +1,43 @@
+基本思想：根据给定的数组建立最大堆（最小堆），然后在堆排序的过程中进行堆的维护。
+input:A=[9,1,5,8,3,7,4,6,2]
+output:A=[9,8,7,6,5,4,3,2,1]
+
+
+class heapSort(object):
+    def swap(self,A,x,y):
+        temp=A[x]
+        A[x]=A[y]
+        A[y]=temp
+
+    def keepHeap(self,A,low,high):
+        cur=A[low]
+        i=2*low+1
+        while i<=high:
+            if i+1>high:
+                if A[i]<cur:
+                    self.swap(A,i,low)
+                break
+            if A[i]>A[i+1]:
+                i+=1
+            if A[i]<cur:
+                A[low]=A[i]
+                A[i]=cur
+                cur=A[i]
+                low=i
+            i=2*i+1
+
+    def hsort(self,A):
+        i=int(len(A)/2)-1#最后一个非叶节点
+        while i >=0:#建最小堆
+            self.keepHeap(A,i,len(A)-1)
+            i-=1
+        j=len(A)-1
+        while j>0:#堆排序
+            self.swap(A,0,j)
+            j-=1
+            self.keepHeap(A,0,j)
+
+a=heapSort()
+A=[9,1,5,8,3,7,4,6,2]
+a.hsort(A)
+print(A)
