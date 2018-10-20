@@ -14,7 +14,7 @@ class quickSort(object):
             self.qsort(A,low,i-1)
             self.qsort(A,i+1,high)
 
-    def partition(self,L,l,r):#选取最右边作为目标词
+    def partition(self,L,l,r):#选取最右边作为目标值
         g=L[r]
         j=l-1
         for i in range(l,r):
